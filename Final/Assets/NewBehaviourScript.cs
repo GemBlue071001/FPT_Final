@@ -9,7 +9,7 @@ public class NewBehaviourScript : MonoBehaviour
     public async Task Start()
     {
         HttpClient client = new HttpClient();
-        using HttpResponseMessage response = await client.GetAsync("https://localhost:7134/WeatherForecast");
+        using HttpResponseMessage response = await client.GetAsync("https://localhost:7173/WeatherForecast");
         response.EnsureSuccessStatusCode();
         var responseBody = await response.Content.ReadAsStringAsync();
         var obj = JsonConvert.DeserializeObject<User>(responseBody);

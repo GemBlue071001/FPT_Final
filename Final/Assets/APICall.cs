@@ -1,17 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Newtonsoft.Json;
+/*using Newtonsoft.Json;*/
 using UnityEngine.Networking;
+/*using Unity.Plastic.Newtonsoft.Json;*/
 
 public class APICall : MonoBehaviour
 {
     // Start is called before the first frame update
+    [System.Serializable]
     public class Fact
     {
-       public string fact {  get;  set; }
-       public string lenght { get; set; }
+        public string fact;
+        public string lenght;
     }
     public class User
     {
@@ -24,7 +25,7 @@ public class APICall : MonoBehaviour
     private void Start()
     {
         StartCoroutine(GetRequest("https://catfact.ninja/fact"));
-        StartCoroutine(GetRequestUser("https://localhost:7173/WeatherForecast"));
+        /*StartCoroutine(GetRequestUser("https://localhost:7173/WeatherForecast"));*/
     }
     public void OnRefresh()
     {
@@ -45,14 +46,15 @@ public class APICall : MonoBehaviour
             
                     break;
                 case UnityWebRequest.Result.Success:
-                    Fact fact = JsonConvert.DeserializeObject<Fact>(webRequest.downloadHandler.text);
+                    Fact fact = JsonUtility.FromJson<Fact>(webRequest.downloadHandler.text);
+                  /*  Fact fact = JsonUtility.FromJson<Fact>(webRequest.downloadHandler.text.ToString());*/
                     text.text = fact.fact;  
                     break;
                     
             }
         }
     }
-    IEnumerator GetRequestUser(string uri)
+   /* IEnumerator GetRequestUser(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
@@ -66,11 +68,12 @@ public class APICall : MonoBehaviour
 
                     break;
                 case UnityWebRequest.Result.Success:
-                    User user = JsonConvert.DeserializeObject<User>(webRequest.downloadHandler.text);
+                    //User user = JsonConvert.DeserializeObject<User>(webRequest.downloadHandler.text);
+                    User user = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
                     textUser.text = user.FirstName;
                     break;
 
             }
         }
-    }
+    }*/
 }

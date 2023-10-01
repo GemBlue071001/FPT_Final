@@ -24,12 +24,16 @@ public class APICall : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
+        Cursor.visible = true;
         StartCoroutine(GetRequest("https://catfact.ninja/fact"));
         /*StartCoroutine(GetRequestUser("https://localhost:7173/WeatherForecast"));*/
     }
     public void OnRefresh()
     {
         Start();
+        Debug.Log("Ji");
     }
 
     IEnumerator GetRequest(string uri)

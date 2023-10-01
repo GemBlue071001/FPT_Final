@@ -3,6 +3,8 @@ using UnityEngine;
 using TMPro;
 /*using Newtonsoft.Json;*/
 using UnityEngine.Networking;
+using System.Collections.Generic;
+using System;
 /*using Unity.Plastic.Newtonsoft.Json;*/
 
 public class APICall : MonoBehaviour
@@ -28,12 +30,12 @@ public class APICall : MonoBehaviour
 
         Cursor.visible = true;
         StartCoroutine(GetRequest("https://catfact.ninja/fact"));
-        /*StartCoroutine(GetRequestUser("https://localhost:7173/WeatherForecast"));*/
+        StartCoroutine(GetRequestExam("https://localhost:7145/api/Examinations/bdd7ef86-f920-4fde-9dda-08dbc28e7568"));
     }
     public void OnRefresh()
     {
         Start();
-        Debug.Log("Ji");
+        
     }
 
     IEnumerator GetRequest(string uri)
@@ -58,7 +60,36 @@ public class APICall : MonoBehaviour
             }
         }
     }
-   /* IEnumerator GetRequestUser(string uri)
+
+    [System.Serializable]
+    public class Response
+    {
+        public int StatusCode;
+        public bool IsSuccess;
+        public string ErrorMessage;
+        public Result Result;
+    }
+    [System.Serializable]
+    public class Result
+    {
+        public string Name;
+        public string Description;
+        public int TotalNumberOfQuestion;
+        public List<ExaminationQuestion> ExaminationQuestions;
+    }
+    [System.Serializable]
+
+    public class ExaminationQuestion
+    {
+        public Question Question;
+    }
+    [System.Serializable]
+    public class Question
+    {
+        public Guid Id;
+        public string Content;
+    }
+    IEnumerator GetRequestExam(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
@@ -73,11 +104,11 @@ public class APICall : MonoBehaviour
                     break;
                 case UnityWebRequest.Result.Success:
                     //User user = JsonConvert.DeserializeObject<User>(webRequest.downloadHandler.text);
-                    User user = JsonUtility.FromJson<User>(webRequest.downloadHandler.text);
-                    textUser.text = user.FirstName;
+                    Response response = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
+                    textUser.text = response.Result.ToString();
                     break;
 
             }
         }
-    }*/
+    }
 }

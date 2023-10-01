@@ -30,65 +30,78 @@ public class APICall : MonoBehaviour
 
         Cursor.visible = true;
         StartCoroutine(GetRequest("https://catfact.ninja/fact"));
-        StartCoroutine(GetRequestExam("https://localhost:7145/api/Examinations/bdd7ef86-f920-4fde-9dda-08dbc28e7568"));
+        StartCoroutine(GetRequestExam("https://localhost:7145/api/Examinations/a655af32-94d9-464c-6049-08dbbe967e9b"));
     }
     public void OnRefresh()
     {
         Start();
-        
+
     }
 
     IEnumerator GetRequest(string uri)
     {
-        using(UnityWebRequest webRequest= UnityWebRequest.Get(uri))
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
             yield return webRequest.SendWebRequest();
-            
-            switch(webRequest.result)
+
+            switch (webRequest.result)
             {
                 case UnityWebRequest.Result.ConnectionError:
                 case UnityWebRequest.Result.DataProcessingError:
                     Debug.LogError(string.Format("Something went wrong: {0}", webRequest.error));
-            
+
                     break;
                 case UnityWebRequest.Result.Success:
                     Fact fact = JsonUtility.FromJson<Fact>(webRequest.downloadHandler.text);
-                  /*  Fact fact = JsonUtility.FromJson<Fact>(webRequest.downloadHandler.text.ToString());*/
-                    text.text = fact.fact;  
+                    /*  Fact fact = JsonUtility.FromJson<Fact>(webRequest.downloadHandler.text.ToString());*/
+                    text.text = fact.fact;
                     break;
-                    
+
             }
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Response
     {
-        public int StatusCode;
-        public bool IsSuccess;
-        public string ErrorMessage;
-        public Result Result;
+        public int statusCode;
+        public bool isSuccess;
+        public string errorMessage;
+        public Result result;
     }
-    [System.Serializable]
+
+    [Serializable]
     public class Result
     {
-        public string Name;
-        public string Description;
-        public int TotalNumberOfQuestion;
-        public List<ExaminationQuestion> ExaminationQuestions;
+        public string name;
+        public string description;
+        public int totalNumberOfQuestion;
+        public List<ExaminationQuestion> examinationQuestions;
     }
-    [System.Serializable]
 
+    [Serializable]
     public class ExaminationQuestion
     {
-        public Question Question;
+        public Question question;
     }
-    [System.Serializable]
+
+    [Serializable]
     public class Question
     {
-        public Guid Id;
-        public string Content;
+        public string id; // This is kept as string for simplicity, but you can parse it to Guid later if needed.
+        public string content;
     }
+
+
+    [Serializable]
+    public class QuestionContent1
+    {
+        public string QuestionContent;
+        public List<string> Answers;
+        public string CorrectAnswer;
+    }
+
+
     IEnumerator GetRequestExam(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
@@ -105,7 +118,11 @@ public class APICall : MonoBehaviour
                 case UnityWebRequest.Result.Success:
                     //User user = JsonConvert.DeserializeObject<User>(webRequest.downloadHandler.text);
                     Response response = JsonUtility.FromJson<Response>(webRequest.downloadHandler.text);
-                    textUser.text = response.Result.ToString();
+                    var content = response.result.examinationQuestions[0].question.content.ToString();
+
+
+                    QuestionContent1 question = JsonUtility.FromJson<QuestionContent1>(content);
+                    textUser.text = question.QuestionContent.ToString();
                     break;
 
             }

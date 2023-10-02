@@ -23,6 +23,8 @@ public class APICall : MonoBehaviour
 
     public TextMeshProUGUI text;
     public TextMeshProUGUI textUser;
+    public TextMeshProUGUI Ans1;
+
 
     private void Start()
     {
@@ -30,7 +32,7 @@ public class APICall : MonoBehaviour
 
         Cursor.visible = true;
         StartCoroutine(GetRequest("https://catfact.ninja/fact"));
-        StartCoroutine(GetRequestExam("https://localhost:7145/api/Examinations/a655af32-94d9-464c-6049-08dbbe967e9b"));
+        StartCoroutine(GetRequestExam("https://localhost:7145/api/Examinations/617045c1-0cfb-4df6-6215-08dbc344fd3c"));
     }
     public void OnRefresh()
     {
@@ -123,6 +125,8 @@ public class APICall : MonoBehaviour
 
                     QuestionContent1 question = JsonUtility.FromJson<QuestionContent1>(content);
                     textUser.text = question.QuestionContent.ToString();
+                    Ans1.text = question.Answers[0].ToString();
+
                     break;
 
             }

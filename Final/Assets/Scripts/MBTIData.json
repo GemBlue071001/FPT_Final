@@ -1,0 +1,42 @@
+{
+    "questions": [
+        {
+            "question_id": 1,
+            "text": "You find it takes effort to introduce yourself to other people.",
+            "type": "Introversion/Extraversion",
+            "responses": [
+                {
+                    "text": "Agree",
+                    "score": 1
+                },
+                {
+                    "text": "Neutral",
+                    "score": 0
+                },
+                {
+                    "text": "Disagree",
+                    "score": -1
+                }
+            ]
+        },
+        {
+            "question_id": 1,
+            "text": "You find it takes effort to introduce yourself to other people.",
+            "type": "Introversion/Extraversion",
+            "responses": [
+                {
+                    "text": "Agree",
+                    "score": 1
+                },
+                {
+                    "text": "Neutral",
+                    "score": 0
+                },
+                {
+                    "text": "Disagree",
+                    "score": -1
+                }
+            ]
+        }
+    ]
+}

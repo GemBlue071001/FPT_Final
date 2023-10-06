@@ -9,6 +9,7 @@ public class MBTI_Quiz : MonoBehaviour
     public TextMeshProUGUI QuestionHeader;
     public TextMeshProUGUI Ans1;
     public TextMeshProUGUI Ans2;
+    public TextMeshProUGUI Ans3;
 
     [System.Serializable]
     public class Question
@@ -50,6 +51,9 @@ public class MBTI_Quiz : MonoBehaviour
             //}
             QuestionHeader.text = loadedData.questions[0].text;
             Ans1.text = loadedData.questions[0].responses[0].text;
+            Ans2.text = loadedData.questions[0].responses[1].text;
+            Ans3.text = loadedData.questions[0].responses[2].text;
+
         }
         else
         {

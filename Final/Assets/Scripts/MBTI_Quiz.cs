@@ -59,17 +59,17 @@ public class MBTI_Quiz : MonoBehaviour
     }
 
 
-    int E = 0;
-    int I = 0;
+  public  int E = 0;
+    public int I = 0;
 
-    int S = 0;
-    int N = 0;
+    public int S = 0;
+    public int N = 0;
 
-    int T = 0;
-    int F = 0;
+    public int T = 0;
+    public int F = 0;
 
-    int J = 0;
-    int P = 0;
+    public int J = 0;
+    public int P = 0;
     public void Agree()
     {
         var question = listQuestions[questionNumber];
@@ -121,12 +121,21 @@ public class MBTI_Quiz : MonoBehaviour
         }
         NextQuestion();
     }
+    public string Finish()
+    {
+        string result = "";
+        result += (E > I) ? "E" : "I";
+        result += (S > N) ? "S" : "N";
+        result += (T > F) ? "T" : "F";
+        result += (J > P) ? "J" : "P";
+        return result;
+    }
     public void NextQuestion()
     {
         Debug.Log(questionNumber);
         if (questionNumber + 1 >= listQuestions.Length)
         {
-            QuestionHeader.text = "finish";
+            QuestionHeader.text = Finish();
             return;
         }
         questionNumber += 1;

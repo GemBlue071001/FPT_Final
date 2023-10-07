@@ -22,7 +22,144 @@
         {
             "question_id": 1,
             "text": "Cau2",
+            "type": "Sensing/Intuition",
+            "responses": [
+                {
+                    "text": "Agree",
+                    "score": 1
+                },
+                {
+                    "text": "Neutral",
+                    "score": 0
+                },
+                {
+                    "text": "Disagree",
+                    "score": -1
+                }
+            ]
+        },
+        {
+            "question_id": 1,
+            "text": "Cau3",
+            "type": "Sensing/Intuition",
+            "responses": [
+                {
+                    "text": "Agree",
+                    "score": 1
+                },
+                {
+                    "text": "Neutral",
+                    "score": 0
+                },
+                {
+                    "text": "Disagree",
+                    "score": -1
+                }
+            ]
+        },
+        {
+            "question_id": 1,
+            "text": "Cau4",
             "type": "Introversion/Extraversion",
+            "responses": [
+                {
+                    "text": "Agree",
+                    "score": 1
+                },
+                {
+                    "text": "Neutral",
+                    "score": 0
+                },
+                {
+                    "text": "Disagree",
+                    "score": -1
+                }
+            ]
+        },
+        {
+            "question_id": 1,
+            "text": "Cau5",
+            "type": "Sensing/Intuition",
+            "responses": [
+                {
+                    "text": "Agree",
+                    "score": 1
+                },
+                {
+                    "text": "Neutral",
+                    "score": 0
+                },
+                {
+                    "text": "Disagree",
+                    "score": -1
+                }
+            ]
+        }
+        ,
+        {
+            "question_id": 1,
+            "text": "Cau6",
+            "type": "Thinking/Feeling",
+            "responses": [
+                {
+                    "text": "Agree",
+                    "score": 1
+                },
+                {
+                    "text": "Neutral",
+                    "score": 0
+                },
+                {
+                    "text": "Disagree",
+                    "score": -1
+                }
+            ]
+        }
+        ,
+        {
+            "question_id": 1,
+            "text": "Cau7",
+            "type": "Judging/Perceiving",
+            "responses": [
+                {
+                    "text": "Agree",
+                    "score": 1
+                },
+                {
+                    "text": "Neutral",
+                    "score": 0
+                },
+                {
+                    "text": "Disagree",
+                    "score": -1
+                }
+            ]
+        }
+        ,
+        {
+            "question_id": 1,
+            "text": "Cau8",
+            "type": "Extraversion/Introversion",
+            "responses": [
+                {
+                    "text": "Agree",
+                    "score": 1
+                },
+                {
+                    "text": "Neutral",
+                    "score": 0
+                },
+                {
+                    "text": "Disagree",
+                    "score": -1
+                }
+            ]
+        }
+        ,
+        {
+            "question_id": 1,
+            "text": "Cau9",
+            "type": "Extraversion/Introversion",
             "responses": [
                 {
                     "text": "Agree",

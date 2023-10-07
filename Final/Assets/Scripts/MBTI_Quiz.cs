@@ -10,6 +10,7 @@ public class MBTI_Quiz : MonoBehaviour
     public TextMeshProUGUI Ans1;
     public TextMeshProUGUI Ans2;
     public TextMeshProUGUI Ans3;
+    public int questionNumber = -1;
 
     [System.Serializable]
     public class Question
@@ -33,31 +34,135 @@ public class MBTI_Quiz : MonoBehaviour
         public Question[] questions;
     }
 
+    MBTIQuestionsList loadedData;
+    public Question[] listQuestions;
+
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
+        Cursor.visible = true;
         string filePath = Path.Combine(Application.dataPath, "Scripts/MBTIData.json");
 
         if (File.Exists(filePath))
         {
             string dataAsJson = File.ReadAllText(filePath);
-            MBTIQuestionsList loadedData = JsonUtility.FromJson<MBTIQuestionsList>(dataAsJson);
-
-            // Example of accessing the data
-            //foreach (var question in loadedData.questions)
-            //{
-            //    QuestionHeader.text = question.text;
-            //    Debug.Log("Question ID: " + question.question_id);
-            //    Debug.Log("Text: " + question.text);
-            //}
-            QuestionHeader.text = loadedData.questions[0].text;
-            Ans1.text = loadedData.questions[0].responses[0].text;
-            Ans2.text = loadedData.questions[0].responses[1].text;
-            Ans3.text = loadedData.questions[0].responses[2].text;
+            loadedData = JsonUtility.FromJson<MBTIQuestionsList>(dataAsJson);
+            listQuestions = loadedData.questions;
+            NextQuestion();
 
         }
         else
         {
             Debug.LogError("Cannot find file!");
         }
+    }
+
+
+    int E = 0;
+    int I = 0;
+
+    int S = 0;
+    int N = 0;
+
+    int T = 0;
+    int F = 0;
+
+    int J = 0;
+    int P = 0;
+    public void Agree()
+    {
+        var question = listQuestions[questionNumber];
+        switch (question.type)
+        {
+            case "Extraversion/Introversion":
+                E += 1;
+                break;
+            case "Sensing/Intuition":
+                S += 1;
+                break;
+            case "Thinking/Feeling":
+                T += 1;
+                break;
+            case "Judging/Perceiving":
+                J += 1;
+                break;
+        }
+        if (questionNumber > listQuestions.Length)
+        {
+
+            return;
+        }
+        NextQuestion();
+    }
+    public void Disagree()
+    {
+        var question = listQuestions[questionNumber];
+        
+        switch (question.type)
+        {
+            case "Extraversion/Introversion":
+                I += 1;
+                break;
+            case "Sensing/Intuition":
+                N += 1;
+                break;
+            case "Thinking/Feeling":
+                F += 1;
+                break;
+            case "Judging/Perceiving":
+                P += 1;
+                break;
+        }
+        if (questionNumber > listQuestions.Length)
+        {
+
+            return;
+        }
+        NextQuestion();
+    }
+    public void NextQuestion()
+    {
+        Debug.Log(questionNumber);
+        if (questionNumber + 1 >= listQuestions.Length)
+        {
+            QuestionHeader.text = "finish";
+            return;
+        }
+        questionNumber += 1;
+       
+        // Example of accessing the data
+        //foreach (var question in loadedData.questions)
+        //{
+        //    QuestionHeader.text = question.text;
+        //    Debug.Log("Question ID: " + question.question_id);
+        //    Debug.Log("Text: " + question.text);
+        //}
+        QuestionHeader.text = loadedData.questions[questionNumber].text;
+        Ans1.text = listQuestions[questionNumber].responses[0].text;
+        Ans2.text = listQuestions[questionNumber].responses[1].text;
+        Ans3.text = listQuestions[questionNumber].responses[2].text;
+        
+        
+
+
+
+    }
+    public void Neutral()
+    {
+        E += 0;
+        S += 0;
+        T += 0;
+        J += 0;
+        I += 0;
+        N += 0;
+        F += 0;
+        P += 0;
+        if (questionNumber > listQuestions.Length)
+        {
+
+            return;
+        }
+        NextQuestion();
     }
 }

@@ -1372,7 +1372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &152538953
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5337,6 +5337,8 @@ MonoBehaviour:
   Ans1: {fileID: 1049714910}
   Ans2: {fileID: 712478975}
   Ans3: {fileID: 1845562071}
+  questionNumber: -1
+  listQuestions: []
 --- !u!1001 &961323753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7287,7 +7289,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1379071479}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 960110864}
+        m_TargetAssemblyTypeName: MBTI_Quiz, Assembly-CSharp
+        m_MethodName: Disagree
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1379071479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8005,7 +8019,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1486921410}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 960110864}
+        m_TargetAssemblyTypeName: MBTI_Quiz, Assembly-CSharp
+        m_MethodName: Neutral
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1486921410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11171,7 +11197,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2068426674}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 960110864}
+        m_TargetAssemblyTypeName: MBTI_Quiz, Assembly-CSharp
+        m_MethodName: Agree
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2068426674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16054,7 +16092,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7552373277114369481}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 313, y: 15.3, z: -108}
+  m_LocalPosition: {x: 231.4, y: 15.3, z: -212.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20014,7 +20052,7 @@ PrefabInstance:
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2000122
+      value: 0.19999695
       objectReference: {fileID: 0}
     - target: {fileID: 2070925441746177912, guid: a1a802ecaf6775746bb2a929fb554ad8,
         type: 3}
@@ -20098,7 +20136,7 @@ PrefabInstance:
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2000122
+      value: 0.19999695
       objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}

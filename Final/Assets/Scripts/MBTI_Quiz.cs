@@ -2,6 +2,10 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
+using static APICall;
+using static System.Net.Mime.MediaTypeNames;
+using UnityEngine.Networking;
+using System.Collections;
 
 public class MBTI_Quiz : MonoBehaviour
 {
@@ -11,6 +15,9 @@ public class MBTI_Quiz : MonoBehaviour
     public TextMeshProUGUI Ans2;
     public TextMeshProUGUI Ans3;
     public int questionNumber = -1;
+    public string jwtToken = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9" +
+        ".eyJuYW1lIjoibWluaHF1YW4iLCJSb2xlIjoiU3R1ZGVudCIsIlVzZXJJZCI6IjkwOWYwM2EyLTA1YzgtNGI5Ny1mNTU2LTA4ZGJjMDlmMTQ2NCIsImV4" +
+        "cCI6MTY5NjgyMjEyN30.bVkMU3y6QZ2HJGkEPPNtsqUQyX-9P-USfs4TpAEwhhY5icLj_E8Y9tR4igxVUUUani5eYYtfgYAakmtt7nu8Vg";
 
     [System.Serializable]
     public class Question
@@ -42,7 +49,7 @@ public class MBTI_Quiz : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         Cursor.visible = true;
-        string filePath = Path.Combine(Application.dataPath, "Scripts/MBTIData.json");
+        string filePath = Path.Combine(UnityEngine.Application.dataPath, "Scripts/MBTIData.json");
 
         if (File.Exists(filePath))
         {
@@ -56,10 +63,36 @@ public class MBTI_Quiz : MonoBehaviour
         {
             Debug.LogError("Cannot find file!");
         }
+        StartCoroutine(GetRequest("https://localhost:7145/WeatherForecast"));
+       
+    }
+
+    IEnumerator GetRequest(string uri)
+    {
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            webRequest.SetRequestHeader("Authorization", "Bearer " + jwtToken);
+            yield return webRequest.SendWebRequest();
+
+            switch (webRequest.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(string.Format("Something went wrong: {0}", webRequest.error));
+
+                    break;
+                case UnityWebRequest.Result.Success:
+                    Fact fact = JsonUtility.FromJson<Fact>(webRequest.downloadHandler.text);
+                    /*  Fact fact = JsonUtility.FromJson<Fact>(webRequest.downloadHandler.text.ToString());*/
+                    break;
+
+            }
+        }
     }
 
 
-  public  int E = 0;
+
+    public  int E = 0;
     public int I = 0;
 
     public int S = 0;

@@ -5302,6 +5302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 960110863}
   - component: {fileID: 960110864}
+  - component: {fileID: 960110865}
   m_Layer: 0
   m_Name: QuizMBTIService
   m_TagString: Untagged
@@ -5336,6 +5337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70eee4c283012f94bbc3a0b2c572c707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tamNgu: {fileID: 0}
   QuestionHeader: {fileID: 1614435397}
   Ans1: {fileID: 1049714910}
   Ans2: {fileID: 712478975}
@@ -5351,6 +5353,19 @@ MonoBehaviour:
   F: 0
   J: 0
   P: 0
+--- !u!114 &960110865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960110862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec291d67eceffa47ae94c5a439a8b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jwtToken: eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibWluaHF1YW4iLCJSb2xlIjoiU3R1ZGVudCIsIlVzZXJJZCI6IjkwOWYwM2EyLTA1YzgtNGI5Ny1mNTU2LTA4ZGJjMDlmMTQ2NCIsImV4cCI6MTY5NjgyMjEyN30.bVkMU3y6QZ2HJGkEPPNtsqUQyX-9P-USfs4TpAEwhhY5icLj_E8Y9tR4igxVUUUani5eYYtfgYAakmtt7nu8Vg
 --- !u!1001 &961323753
 PrefabInstance:
   m_ObjectHideFlags: 0

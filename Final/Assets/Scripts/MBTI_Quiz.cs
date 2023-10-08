@@ -7,9 +7,10 @@ using static System.Net.Mime.MediaTypeNames;
 using UnityEngine.Networking;
 using System.Collections;
 
+
 public class MBTI_Quiz : MonoBehaviour
 {
-
+    public TamNguLon tamNgu;
     public TextMeshProUGUI QuestionHeader;
     public TextMeshProUGUI Ans1;
     public TextMeshProUGUI Ans2;
@@ -64,6 +65,8 @@ public class MBTI_Quiz : MonoBehaviour
             Debug.LogError("Cannot find file!");
         }
         StartCoroutine(GetRequest("https://localhost:7145/WeatherForecast"));
+        tamNgu = new TamNguLon();
+        tamNgu.TamNgu();
        
     }
 

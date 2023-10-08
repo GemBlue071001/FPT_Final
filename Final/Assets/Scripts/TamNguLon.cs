@@ -39,6 +39,11 @@ public class TamNguLon : MonoBehaviour
             }
         }
     }
+    public void TamNgu()
+    {
+        Debug.Log("Tam ngu");
+
+    }
 
     // Update is called once per frame
     void Update()

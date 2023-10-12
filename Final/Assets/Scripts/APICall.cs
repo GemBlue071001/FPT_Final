@@ -58,7 +58,6 @@ public class APICall : MonoBehaviour
                     /*  Fact fact = JsonUtility.FromJson<Fact>(webRequest.downloadHandler.text.ToString());*/
                     text.text = fact.fact;
                     break;
-
             }
         }
     }

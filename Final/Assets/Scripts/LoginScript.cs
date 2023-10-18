@@ -37,7 +37,11 @@ public class LoginScript : MonoBehaviour
         string url = "https://localhost:7145/api/Users/login";
 
         // Send a POST request with RestClient
-        RestClient.Post<LoginResponse>(url, loginData).Then(response =>
+        RestClient.Post<LoginResponse>(new RequestHelper()
+        {
+            Uri = url,
+            Body = loginData
+        }).Then(response =>
         {
             // Check the response here
             Debug.Log("Login response dit me m : " + response.result);
@@ -48,5 +52,5 @@ public class LoginScript : MonoBehaviour
         });
     }
 
-    
+
 }

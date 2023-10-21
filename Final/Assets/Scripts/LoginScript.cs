@@ -2,12 +2,14 @@ using System.Collections;
 using UnityEngine;
 using Proyecto26;
 using TMPro;
+using System.Collections.Generic;
 
 public class LoginScript : MonoBehaviour
 {
 
     public TMP_InputField inputUserName;
     public TMP_InputField inputPassword;
+    public string token;
 
     [System.Serializable]
     public class LoginData
@@ -44,13 +46,45 @@ public class LoginScript : MonoBehaviour
         }).Then(response =>
         {
             // Check the response here
-            Debug.Log("Login response dit me m : " + response.result);
+            Debug.Log("Login response: " + response.result);
+            token = response.result;
         }).Catch(error =>
         {
             // Handle errors here
-            Debug.LogError("Error sai roi !!!!!!!!!!!: " + error.Message);
+            Debug.LogError("Error:" + error.Message);
         });
     }
 
+    [System.Serializable]
+    public class SubjectRequest
+    {
+        public string Name;
+        public string Description;
+    }
+
+    public void CreateSubject()
+    {
+        RestClient.Post<LoginResponse>(new RequestHelper()
+        {
+            Uri = "https://localhost:7145/api/Subjects",
+            Body = new SubjectRequest
+            {
+                Name = "t chinh la trinh tam",
+                Description = "ngoc thanh"
+            },
+            Headers = new Dictionary<string, string> {
+             { "Authorization", $"Bearer {token}" }
+            }
+        }).Then(response =>
+        {
+            // Check the response here
+            Debug.Log("Login response: " + response.isSuccess);
+            token = response.result;
+        }).Catch(error =>
+        {
+            // Handle errors here
+            Debug.LogError("Error:" + error.Message.ToString());
+        });
+    }
 
 }

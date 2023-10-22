@@ -8,19 +8,20 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: brushed metal
-    second: {fileID: -3661639628750336703, guid: 7e0223e1d3e1733499accfa5ebffb67e,
+    second: {fileID: -8387617026056533479, guid: aa38d7b0e367ecc4aac915dcfe957879,
       type: 3}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: cooktop
-    second: {fileID: -8542342317496269131, guid: 27da2edd0bace5648b6b39e823d82052,
+    second: {fileID: -2882098579156209182, guid: 08dd3b78d6eb8bd4cb8cee726e8c2648,
       type: 3}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lampica
-    second: {fileID: 2100000, guid: 30b92673b9b7ef44c9c11a474d9910c9, type: 2}
+    second: {fileID: 6966512358694853798, guid: 868a0361546d9a74e85b44acd5b4fc8f,
+      type: 3}
   materials:
     materialImportMode: 1
     materialName: 0

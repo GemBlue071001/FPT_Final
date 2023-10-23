@@ -3,7 +3,12 @@ guid: 924ef5aa05ab49545b3a2324e13e3a4f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cartoon wooden floor
+    second: {fileID: 2100000, guid: 9c0545f1b517b8c42a0247e9e7d318b2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

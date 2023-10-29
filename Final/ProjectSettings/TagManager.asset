@@ -5,17 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
-  - InteractiveObject
-  - Quest
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Interact
-  - Ground
+  - 
+  - 
   - 
   - 
   - 
@@ -43,4 +41,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 864862295
     locked: 0
